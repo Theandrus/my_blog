@@ -1,0 +1,19 @@
+*{
+    background-color: #313665;
+    font-family: Copperplate, Fantasy;
+    color: white;
+}
+
+textarea{
+    background-color: white;
+    width: 500px;
+    height: 200px;
+    color: black;
+}
+
+#title{
+    background-color: white;
+    width: 200px;
+    height: 50px;
+    color: black;
+}

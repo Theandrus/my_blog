@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/post_details.css">
+    <title>Posts</title
+</head>
+
+<body>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+</body>
+
+{% block title %}
+{% endblock %}
+<div class="container mt-5">
+    <h1>{{ article.title }}</h1>
+
+    <div class="alert alert-info">
+        <p>{{ article.text }}</p>
+        <p><b> Date: {{ article.date.date() }}</b></p>
+    </div>
+</div>
+
+{% block text %}
+{{ comments.text }}
+{% endblock %}
+<div class="container mt-5">
+    <h1>Add</h1>
+    <form method = "POST">
+    <textarea name="text" id="text" class = "form-control"></textarea><br>
+        <input type="submit" class  = "btn btn-success" value = "add">
+    </form>
+</div>
+
+<div class="container mt-5">
+<h1>Comments</h1>
+
+{% for el in comments %}
+<div class="container mt-5">
+<div class="alert alert-info">
+    <h6>{{ el.text }}</h6>
+    <div class="alert alert-info">
+
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+
+
+</body>
+</html>

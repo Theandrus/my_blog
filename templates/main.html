@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+</body>
+
+{% if session.get('logged_in') %}
+<div class="container">
+<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Log Out</span>
+      </a>
+
+    <div class="username">
+        <h5>{{session.get('user')['login']}}</h5>
+    </div>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+          <a class="w-10 btn btn-lg btn-primary" style = "margin-top: 20px" href="/create">Create article</a>
+            <div class="exit_button">
+                <a class="w-10 btn btn-lg btn-primary" style = "margin-top: 20px" href="/logout">Exit</a>
+            </div>
+      </nav>
+    </div>
+        <h1>All articles</h1>
+
+    {% for el in article %}
+    <div class="alert alert-info">
+        <ul>
+            <li>
+                <h2>{{ el.title }}</h2>
+                <p><b> Date: {{ el.date.date() }}</b></p>
+                <a href = "/posts/{{ el.id }}" class = "btn btn-warning">Info</a>
+                    <button name="like" type="button">Like</button>
+                    <button name="dislike" type="button">Dislike</button>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+
+    </div>
+{% else %}
+<div class="container">
+<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Log out</span>
+      </a>
+
+{% endif %}
+</div>
+    </div>
+
+<div class="pagination">
+    <a href="">1</a>
+    <a href="">2</a>
+    <a href="">3</a>
+    <a href="">4</a>
+    <a href="">5</a>
+    <a href="">6</a>
+    <div class="bottom_bar"></div>
+</div>
+
+
+</body>
+</html>
