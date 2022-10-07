@@ -49,3 +49,11 @@ class Comments(db.Model):
 
     def __repr__(self):
         return '<Article %r>' % self.id
+
+
+class Likes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user = db.Column(db.Integer, db.ForeignKey('users.id'))
+    title = db.Column(db.Integer, db.ForeignKey('article.id'))
+    i_like = db.Column(db.Boolean)
+    i_dislike = db.Column(db.Boolean)

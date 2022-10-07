@@ -1,3 +1,7 @@
+*{
+    font-family: Copperplate, Fantasy;
+}
+
 body {
    background-color: #313665;
    font-family: Copperplate, Fantasy;
@@ -25,14 +29,7 @@ a.w-10{
       font-family: Copperplate, Fantasy;
 }
 
-.alert{
-    color: #ffffff;
-    width: 470px;
-    height: 250px;
-    margin: auto auto;
-    align-items: center;
-    background-color: #adb4ec;
-}
+
 
 h1{
     font-size: 50px;
@@ -52,13 +49,13 @@ h5{
 }
 
 .username{
-    width: 100px;
+    width: 250px;
     height: 70px;
     display: flex;
-    background-color: #adb4ec;
-    text-align: right;
+    text-align: center;
     margin: auto auto;
-    padding-left: 15px ;
+    padding-left: 135px;
+    /*padding-right: 135px;*/
 }
 
 .exit_button{
@@ -72,12 +69,21 @@ button{
     font-family: Copperplate, Fantasy;
 }
 
-/*button:focus{*/
-/*    background: #d8e719;*/
-/*}*/
+button:focus{
+    background: #d8e719;
+    font-family: Copperplate, Fantasy;
+}
 
-.like:focus{
-        background: #d8e719;
+.like{
+    background: #ffffff;
+}
+
+.like:active{
+    background: #07d211;
+}
+
+.dislike:focus{
+        background: #ec0c37;
 }
 
 .pagination{
@@ -86,9 +92,7 @@ button{
       position: relative;
       overflow: hidden;
       border-radius: 50px;
-      margin-right: 290px;
-      margin-left: 290px;
-      margin-top: 1550px;
+
 }
 
 .pagination a{
@@ -165,6 +169,32 @@ button{
       flex-wrap: wrap;
 }
 
+a[href*="main"]{
+    font-family: Copperplate, Fantasy;
+}
+
+ul{
+    /*margin-top: 45px;*/
+    color: #ffffff;
+    width: 430px;
+    height: 190px;
+    margin: 65px 65px;
+    align-items: center;
+    background-color: #adb4ec;
+}
+
+.text-right{
+    background-color: #adb4ec;
+    font-size: 20px;
+    margin-right: 290px;
+    margin-left: 290px;
+    margin-top: 1450px;
+    padding-left: 20px;
+}
+
+.like{
+    color: #ffffff;
+}
 
 
 
