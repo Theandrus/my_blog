@@ -2,7 +2,6 @@ from app import *
 from models import *
 from flask import render_template, request, session, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_paginate import Pagination, get_page_parameter
 from sqlalchemy import update
 
 
@@ -19,22 +18,26 @@ def main():
 @app.route('/main/like/<int:id>', methods=["GET", "POST"])
 def like(id):
     like1 = Likes.query.filter(Likes.title == id).first()
+    # name_of_title = like1.i_like
+    user = Likes.query.filter(Likes.user == session.get('user')['id']).first()
+    # usr = user.user
     try:
         name_of_title = like1.i_like
+        usr = user.user
     except AttributeError:
         user_id = session.get('user')['id']
         likes = Likes(i_like=True, i_dislike=False, user=user_id, title=id)
         db.session.add(likes)
         db.session.commit()
         return 'Liked!'
-    if request.method == 'GET' and name_of_title is True:
+    if request.method == 'GET' and name_of_title is True and session.get('user')['id'] == usr:
         user_id = session.get('user')['id']
         Likes.query.filter_by(i_like=1, user=user_id, title=id).update(dict(i_like=0))
         db.session.commit()
         return 'Unliked:('
     elif request.method == 'GET':
         user_id = session.get('user')['id']
-        Likes.query.filter_by(i_like=0, user=user_id, title=id).update(dict(i_like=1, i_dislike=0))
+        Likes.query.filter_by(i_like=0,user=user_id, title=id).update(dict(i_like=1, i_dislike=0))
         db.session.commit()
         return 'Liked!'
     return redirect('/main')
@@ -43,15 +46,18 @@ def like(id):
 @app.route('/main/dislike/<int:id>', methods=["GET", "POST"])
 def dislike(id):
     dislike1 = Likes.query.filter(Likes.title == id).first()
+    user = Likes.query.filter(Likes.user == session.get('user')['id']).first()
+    # usr = user.user
     try:
         name_of_title = dislike1.i_dislike
+        usr = user.user
     except AttributeError:
         user_id = session.get('user')['id']
         likes = Likes(i_like=False, i_dislike=True, user=user_id, title=id)
         db.session.add(likes)
         db.session.commit()
         return 'Disliked!'
-    if request.method == 'GET' and name_of_title is True:
+    if request.method == 'GET' and name_of_title is True and session.get('user')['id'] == usr:
         user_id = session.get('user')['id']
         Likes.query.filter_by(i_dislike=1, user=user_id, title=id).update(dict(i_dislike=0))
         db.session.commit()
